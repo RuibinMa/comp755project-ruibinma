@@ -37,23 +37,19 @@ To test the vocabulary tree image retriever using the same testing dataset:
 ```
 python3 -m colmap_retrieval.test data/test/colon/gnd_colon.pkl --load-score-path data/test/colon/vocab_tree_retrieval_score.bin
 ```
-The code uses a software called COLMAP [(https://github.com/colmap/colmap)] to extract SIFT features and run vocabulary tree image retriever. Because this software is not easy to install, I precomputed the output of vocabulary tree retriever in data/test/colon/vocab-tree-retrieval-score.bin. The above program directly loads the scores instead of running COLMAP APIs. The .bin file is a numpy array of size (descriptor_size x num_queries). If this path is not specified, you need to install colmap to your system path, the script in this project calls the APIs directly. 
-## Related publications
+The code uses a software called COLMAP [(https://github.com/colmap/colmap)] to extract SIFT features and run vocabulary tree image retriever. Because this software is not easy to install, I precomputed the output of vocabulary tree retriever in data/test/colon/vocab-tree-retrieval-score.bin. The above program directly loads the scores instead of running COLMAP APIs. The .bin file is a numpy array of size (descriptor_size x num_queries). If this path is not specified, you need to install colmap to your system path, the script in this project calls the APIs directly.
 
-### Training (fine-tuning) convolutional neural networks 
-```
-@article{RTC18,
- title = {Fine-tuning {CNN} Image Retrieval with No Human Annotation},
- author = {Radenovi{\'c}, F. and Tolias, G. and Chum, O.}
- journal = {TPAMI},
- year = {2018}
-}
-```
-```
-@inproceedings{RTC16,
- title = {{CNN} Image Retrieval Learns from {BoW}: Unsupervised Fine-Tuning with Hard Examples},
- author = {Radenovi{\'c}, F. and Tolias, G. and Chum, O.},
- booktitle = {ECCV},
- year = {2016}
-}
-```
+cirtorch/examples/cnncolonclam.py is the implementation according to FABMAP [http://www.robots.ox.ac.uk/~mjc/Papers/IJRR_2008_FabMap.pdf] work. However, because it does not produce satisfactory result, I am not attaching data for this file.
+
+## Related publications
+**Fine-tuning CNN Image Retrieval with No Human Annotation**,  
+Radenović F., Tolias G., Chum O., 
+TPAMI 2018 [[arXiv](https://arxiv.org/abs/1711.02512)]
+
+**CNN Image Retrieval Learns from BoW: Unsupervised Fine-Tuning with Hard Examples**,  
+Radenović F., Tolias G., Chum O., 
+ECCV 2016 [[arXiv](http://arxiv.org/abs/1604.02426)]
+
+**FAB-MAP: Probabilistic Localization and Mapping in the Space of Appearance**,
+Mark Cummins and Paul Newman,
+The International Journal of Robotics Research 2008 [[paper](http://www.robots.ox.ac.uk/~mjc/Papers/IJRR_2008_FabMap.pdf)]
