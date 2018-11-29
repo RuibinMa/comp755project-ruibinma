@@ -37,7 +37,7 @@ To test the vocabulary tree image retriever using the same testing dataset:
 ```
 python3 -m colmap_retrieval.test data/test/colon/gnd_colon.pkl --load-score-path data/test/colon/vocab_tree_retrieval_score.bin
 ```
-The code uses a software called COLMAP [(https://github.com/colmap/colmap)] to extract SIFT features and run vocabulary tree image retriever. Because this software is not easy to install, I precomputed the output of vocabulary tree retriever in data/test/colon/vocab-tree-retrieval-score.bin. The above program directly loads the scores instead of running COLMAP APIs. The .bin file is a numpy array of size (descriptor_size x num_queries). If this path is not specified, you need to install colmap to your system path, the script in this project calls the APIs directly.
+The code uses a software called COLMAP [(https://github.com/colmap/colmap)] to extract SIFT features and run vocabulary tree image retriever. Because this software is not easy to install, I precomputed the output of vocabulary tree retriever in data/test/colon/vocab-tree-retrieval-score.bin. The above program directly loads the scores instead of running COLMAP APIs. The .bin file is a numpy array of size (num_pool_images x num_queries). If this path is not specified, you need to install colmap to your system path, the script in this project calls the APIs directly.
 
 cirtorch/examples/cnncolonclam.py is the implementation according to FABMAP work. However, because it does not produce satisfactory result, I am not attaching data for this file.
 
